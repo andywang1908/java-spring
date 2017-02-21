@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xml>
+<configuration>
+    <property name="LOG_HOME" value="log"/>
+    
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>\(%d{HH:mm:ss.SSS} [%thread]\) %-5level %logger{32} %L - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!--discardingThreshold: 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 --> 
+    <!--queueSize:  更改默认的队列的深度,该值会影响性能.默认值为256 --> 
+    <!--appender-ref:  添加附加的appender,最多只能添加一个 -->
+    <!-- 包装其他的Appender，支持异步输出
+    <appender name ="asyncFlume" class= "ch.qos.logback.classic.AsyncAppender">  
+         <discardingThreshold >0</discardingThreshold>
+         <queueSize>512</queueSize>      
+         <appender-ref ref ="flume"/>  
+    </appender>  
+     -->
+
+    <appender name="info2File" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY </onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/info.%d{yyyy-MM-dd}.log
+            </FileNamePattern>
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-26(%d{HH:mm:ss SSS,Asia/Chongqing} [%thread]) %-5level
+                %logger{32} - %msg%n %caller{1, DISP_CALLER_EVAL}</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="error2File" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY </onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/error.%d{yyyy-MM-dd}.log
+            </FileNamePattern>
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-26(%d{HH:mm:ss SSS,Asia/Chongqing} [%thread]) %-5level
+                %logger{32} - %msg%n %caller{1, DISP_CALLER_EVAL}</pattern>
+        </encoder>
+    </appender>
+      
+      <appender name="login2File" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 特定过滤含有某字符串的日志
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>message.contains("str")</expression>
+            </evaluator>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+         -->
+         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/login.%d{yyyy-MM-dd-HH}.log</FileNamePattern>
+            <MaxHistory>2400</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%m%n</pattern>
+        </encoder>
+      </appender>
+      
+      
+    <!-- 
+    <appender name="all2db" class="ch.qos.logback.classic.db.DBAppender">
+        <connectionSource
+            class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+            <driverClass>com.mysql.jdbc.Driver</driverClass>
+            <url>jdbc:mysql://host_name:3306/datebase_name</url>
+            <user>username</user>
+            <password>password</password>
+        </connectionSource>
+    </appender> -->
+        
+    <logger name="ca.on.gov.s2i.cempedak" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="info2File"/>
+        <appender-ref ref="error2File"/>
+　　　　       <!-- <appender-ref ref="all2db"/> -->
+    </root>
+</configuration>

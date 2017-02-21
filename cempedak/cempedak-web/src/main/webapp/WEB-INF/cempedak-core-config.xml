@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xsi:schemaLocation="
+ http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd
+ http://www.springframework.org/schema/mvc
+ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+  <context:component-scan base-package="ca.on.gov.s2i.cempedak.web" />
+  <!-- important for json convert -->
+  <mvc:annotation-driven />
+
+  <bean
+    class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix">
+      <value>/WEB-INF/views/</value>
+    </property>
+    <property name="suffix">
+      <value>.jsp</value>
+    </property>
+  </bean>
+
+  <bean id="exceptionResolver"
+    class="ca.on.gov.s2i.cempedak.web.PlatformMappingExceptionResolver">
+    <property name="exceptionMappings">
+      <props>
+        <prop key="java.lang.Exception">error/error</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+    <property name="messageConverters">
+      <list>
+        <!-- spring 3:jackson1 spring 4:jackson2 <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/> 
+          <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" 
+          /> <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" 
+          /> -->
+        <bean
+          class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+      </list>
+    </property>
+  </bean>
+</beans>
