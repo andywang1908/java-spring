@@ -33,7 +33,7 @@ public class HelloWorldController {
         model.addAttribute("name", name);
         
         String abc = "abc";
-        LOG.debug(abc.substring(0,100));
+        // LOG.debug(abc.substring(0,100));
 
         return "helloworld";
     }
