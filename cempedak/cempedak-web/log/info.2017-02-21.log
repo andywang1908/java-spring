@@ -1,0 +1,42 @@
+05:33:32 581 [main]        INFO 
+                o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+ Caller+0	 at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:305)
+05:33:32 749 [main]        INFO 
+                o.s.w.c.s.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Tue Feb 21 16:33:32 EST 2017]; root of context hierarchy
+ Caller+0	 at org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:581)
+05:33:32 811 [main]        INFO 
+                o.s.b.f.x.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/cempedak-core-config.xml]
+ Caller+0	 at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+05:33:33 496 [main]        INFO 
+                o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+ Caller+0	 at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:153)
+05:33:33 828 [main]        INFO 
+                o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/simple],methods=[GET],produces=[application/json]}" onto public ca.on.gov.s2i.cempedak.Pager ca.on.gov.s2i.cempedak.web.SimpleController.findAllCycleHighway()
+ Caller+0	 at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:540)
+05:33:33 831 [main]        INFO 
+                o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/helloWorld/hello]}" onto public java.lang.String ca.on.gov.s2i.cempedak.web.HelloWorldController.hello(java.lang.String,java.lang.String,org.springframework.ui.Model)
+ Caller+0	 at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:540)
+05:33:33 831 [main]        INFO 
+                o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/helloWorld/findAllCycleHighway],methods=[GET],produces=[application/json]}" onto public ca.on.gov.s2i.cempedak.Pager ca.on.gov.s2i.cempedak.web.HelloWorldController.findAllCycleHighway()
+ Caller+0	 at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:540)
+05:33:34 283 [main]        INFO 
+                o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Tue Feb 21 16:33:32 EST 2017]; root of context hierarchy
+ Caller+0	 at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:539)
+05:33:34 344 [main]        INFO 
+                o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Tue Feb 21 16:33:32 EST 2017]; root of context hierarchy
+ Caller+0	 at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:539)
+05:33:34 486 [main]        INFO 
+                o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1898 ms
+ Caller+0	 at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:345)
+05:33:34 540 [main]        INFO 
+                o.s.w.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization started
+ Caller+0	 at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:487)
+05:33:34 544 [main]        INFO 
+                o.s.w.c.s.XmlWebApplicationContext - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Tue Feb 21 16:33:34 EST 2017]; parent: Root WebApplicationContext
+ Caller+0	 at org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:581)
+05:33:34 545 [main]        INFO 
+                o.s.b.f.x.XmlBeanDefinitionReader - Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+ Caller+0	 at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+05:33:34 569 [main]        INFO 
+                o.s.w.servlet.DispatcherServlet - FrameworkServlet 'dispatcher': initialization completed in 29 ms
+ Caller+0	 at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:506)

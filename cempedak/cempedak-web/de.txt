@@ -1,0 +1,4 @@
+1. junit
+2. log exception 404page
+3. hibernate - transaction
+4. ear
